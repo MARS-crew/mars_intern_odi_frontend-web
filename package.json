@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "vite --port 3000",
     "build": "vite build",
-    "preview": "vite preview"
     "preview": "vite preview",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "dependencies": {
     "react": "^18.2.0",
