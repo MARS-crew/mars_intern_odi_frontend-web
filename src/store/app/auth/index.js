@@ -1,8 +1,8 @@
 // ** Redux Imports
 import { createSlice } from "@reduxjs/toolkit"
+import { authApi } from "../../../services"
 
 const initialState = {
-  id: "",
   name: "",
   accessToken: "",
   refreshToken: "",
@@ -11,16 +11,19 @@ const initialState = {
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    userLogout: (state) => {
-      state = initialState
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addMatcher(
+      authApi.endpoints.login.matchFulfilled,
+      (state, { payload }) => {
+        state = {
+          name: payload.responseData.name,
+          accessToken: payload.responseData.accessToken,
+          refreshToken: payload.responseData.refreshToken,
+        }
+      },
+    )
   },
-  extraReducers: (builder) => {},
 })
 
 export default authSlice.reducer
-
-export const { userLogout } = authSlice.actions
-
-export const selectMe = (state) => state.auth

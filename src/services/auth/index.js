@@ -6,7 +6,15 @@ export const authApi = api
   })
   .injectEndpoints({
     overrideExisting: false,
-    endpoints: (builder) => ({}),
+    endpoints: (builder) => ({
+      login: builder.mutation({
+        query: (args) => ({
+          url: "/user/login",
+          method: "POST",
+          body: args,
+        }),
+      }),
+    }),
   })
 
-export const {} = authApi
+export const { useLoginMutation } = authApi
