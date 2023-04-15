@@ -3,9 +3,11 @@ import { createSlice } from "@reduxjs/toolkit"
 import { authApi } from "../../../services"
 
 const initialState = {
-  name: "",
-  accessToken: "",
-  refreshToken: "",
+  user: {
+    name: "",
+    accessToken: "",
+    refreshToken: "",
+  },
 }
 
 export const authSlice = createSlice({
@@ -16,7 +18,8 @@ export const authSlice = createSlice({
     builder.addMatcher(
       authApi.endpoints.login.matchFulfilled,
       (state, { payload }) => {
-        state = {
+        console.log(payload)
+        state.user = {
           name: payload.responseData.name,
           accessToken: payload.responseData.accessToken,
           refreshToken: payload.responseData.refreshToken,
@@ -27,3 +30,5 @@ export const authSlice = createSlice({
 })
 
 export default authSlice.reducer
+
+export const selectMe = (state) => state.auth.user

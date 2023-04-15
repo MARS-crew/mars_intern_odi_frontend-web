@@ -9,7 +9,9 @@ const baseUrl = "http://phone.pinodev.shop:8000/api"
 const baseQuery = fetchBaseQuery({
   prepareHeaders: (headers, { getState }) => {
     const {
-      auth: { accessToken },
+      auth: {
+        user: { accessToken },
+      },
     } = getState()
 
     if (accessToken) {
