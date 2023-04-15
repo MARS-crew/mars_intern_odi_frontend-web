@@ -37,7 +37,7 @@ const LoginPage = () => {
       .unwrap()
       .then((res) => {
         if (res.status === 200) {
-          navigate("/register")
+          navigate("/")
 
           return
         }
