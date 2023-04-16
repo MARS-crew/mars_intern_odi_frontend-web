@@ -1,8 +1,8 @@
 // ** Router Imports
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-import HomePage from './pages/\bpage-home'
-import LoginPage from './pages/page-login'
+import HomePage from "./pages/page-home"
+import LoginPage from "./pages/page-login"
 
 const App = () => {
   return (
