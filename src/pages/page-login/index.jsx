@@ -87,20 +87,52 @@ function LoginPage(props) {
           }}
         >
           <h2>Welcome! HODI STUDIO</h2>
-          <h5 style={{ textAlign: "center" }}>
-            This site provides information on the <br></br>history and works of
-            our studio. <br></br>Let's talk together! I hope you have a good
-            time.
-          </h5>
 
+          <button
+            style={{
+              border: "none",
+              backgroundColor: "transparent",
+              color: "#7B3911",
+              fontSize: "13px",
+              fontWeight: "bold",
+              marginBottom: "40px",
+            }}
+          >
+            Tip. 로그인에 문제가 발생하셨나요?
+          </button>
           <form
-            style={{ display: "flex", flexDirection: "column" }}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              textAlign: "left",
+            }}
             onSubmit={onSubmitHandler}
           >
             <label>Email</label>
-            <input type="email" value={Email} onChange={onEmailHandler} />
+            <input
+              style={{
+                outline: "none",
+                borderTop: "none",
+                borderRight: "none",
+                borderLeft: "none",
+                borderBottom: "2px solid #7B3911",
+                transition: "border-color 0.3s ease-in-out",
+                marginBottom: "20px",
+              }}
+              type="email"
+              value={Email}
+              onChange={onEmailHandler}
+            />
             <label>Password</label>
             <input
+              style={{
+                outline: "none",
+                borderTop: "none",
+                borderRight: "none",
+                borderLeft: "none",
+                borderBottom: "2px solid #7B3911",
+                transition: "border-color 0.3s ease-in-out",
+              }}
               type="password"
               value={Password}
               onChange={onPasswordHandler}
@@ -125,6 +157,15 @@ function LoginPage(props) {
               Login
             </button>
           </form>
+          <div>
+            <button style={{ border: "none", backgroundColor: "transparent" }}>
+              홈으로
+            </button>
+            <span>|</span>
+            <button style={{ border: "none", backgroundColor: "transparent" }}>
+              회원가입
+            </button>
+          </div>
         </div>
       </div>
     </div>

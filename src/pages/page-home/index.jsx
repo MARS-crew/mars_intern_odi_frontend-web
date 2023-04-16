@@ -101,7 +101,7 @@ function LandingPage() {
             <button style={{ border: "none", backgroundColor: "transparent" }}>
               로그인
             </button>
-            <text>/</text>
+            <span>|</span>
             <button style={{ border: "none", backgroundColor: "transparent" }}>
               회원가입
             </button>
