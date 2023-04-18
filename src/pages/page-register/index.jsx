@@ -1,22 +1,29 @@
 import React, { useState } from "react"
-import Axios from "axios"
 import { useDispatch } from "react-redux"
 import { loginUser } from "../../_actions/user_action"
-
-function LoginPage(props) {
-  //파라미터로 props 넣어줘야함! 로그인 완료된 후 처음 화면으로 돌아가게 하기 위함
-
+import { registerUser } from "../../_actions/user_action"
+import { useParams, useLocation, useNavigate } from "react-router-dom"
+function RegisterPage(props) {
   const dispatch = useDispatch()
 
   const [Email, setEmail] = React.useState(" ")
   const [Password, setPassword] = React.useState(" ")
+  const [Name, setName] = React.useState(" ")
+  const [ConfirmPassword, setConfirmPassword] = React.useState(" ")
 
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value)
   }
 
+  const onNameHandler = (event) => {
+    setName(event.currentTarget.value)
+  }
+
   const onPasswordHandler = (event) => {
     setPassword(event.currentTarget.value)
+  }
+  const onConfirmPasswordHandler = (event) => {
+    setConfirmPassword(event.currentTarget.value)
   }
 
   const onSubmitHandler = (event) => {
@@ -25,18 +32,23 @@ function LoginPage(props) {
     // console.log('Email', Email);
     // console.log('Password', Password);
 
+    //비밀번호와 비밀번호 확인 같을띠 회원가입 되게 함
+    if (Password !== ConfirmPassword) {
+      return alert("비밀번호와 비밀번호 확인은 같아야 합니다.")
+    } //여기서 걸리면 아래로 못감
+
     let body = {
       email: Email,
       password: Password,
+      name: Name,
     }
 
     //디스패치로 액션 취하기
-    dispatch(loginUser(body)).then((response) => {
-      if (response.payload.loginSuccess) {
-        props.history.push("/") //리액트에서 페이지 이동하기 위해서는 props.history.push() 이용.
-        // 로그인 완료된 후 처음 화면(루트 페이지-landingpage로)으로 돌악가게 하기
+    dispatch(registerUser(body)).then((response) => {
+      if (response.payload.success) {
+        props.history.push("/login")
       } else {
-        alert(" Error")
+        alert("Failed to sign up")
       }
     })
   }
@@ -49,7 +61,6 @@ function LoginPage(props) {
         alignItems: "center",
         width: "100%",
         height: "100vh",
-        backgroundColor: "#E3AB9A",
       }}
     >
       <div
@@ -80,14 +91,13 @@ function LoginPage(props) {
             display: "flex",
             flexDirection: "column",
             width: "400px",
-            height: "400px",
+            height: "600px",
             alignItems: "center",
             justifyContent: "center",
             borderRadius: "20px",
           }}
         >
           <h2>Welcome! HODI STUDIO</h2>
-
           <button
             style={{
               border: "none",
@@ -98,8 +108,9 @@ function LoginPage(props) {
               marginBottom: "40px",
             }}
           >
-            Tip. 로그인에 문제가 발생하셨나요?
+            Tip. 회원가입에 문제가 발생하셨다면?
           </button>
+
           <form
             style={{
               display: "flex",
@@ -123,6 +134,23 @@ function LoginPage(props) {
               value={Email}
               onChange={onEmailHandler}
             />
+
+            <label>Name</label>
+            <input
+              style={{
+                outline: "none",
+                borderTop: "none",
+                borderRight: "none",
+                borderLeft: "none",
+                borderBottom: "2px solid #7B3911",
+                transition: "border-color 0.3s ease-in-out",
+                marginBottom: "20px",
+              }}
+              type="text"
+              value={Name}
+              onChange={onNameHandler}
+            />
+
             <label>Password</label>
             <input
               style={{
@@ -132,10 +160,27 @@ function LoginPage(props) {
                 borderLeft: "none",
                 borderBottom: "2px solid #7B3911",
                 transition: "border-color 0.3s ease-in-out",
+                marginBottom: "20px",
               }}
               type="password"
               value={Password}
               onChange={onPasswordHandler}
+            />
+
+            <label>Confirm Password</label>
+            <input
+              style={{
+                outline: "none",
+                borderTop: "none",
+                borderRight: "none",
+                borderLeft: "none",
+                borderBottom: "2px solid #7B3911",
+                transition: "border-color 0.3s ease-in-out",
+                marginBottom: "20px",
+              }}
+              type="password"
+              value={ConfirmPassword}
+              onChange={onConfirmPasswordHandler}
             />
 
             <br />
@@ -154,7 +199,7 @@ function LoginPage(props) {
                 height: "60px",
               }}
             >
-              Login
+              회원 가입
             </button>
           </form>
           <div>
@@ -163,7 +208,7 @@ function LoginPage(props) {
             </button>
             <span>|</span>
             <button style={{ border: "none", backgroundColor: "transparent" }}>
-              회원가입
+              로그인
             </button>
           </div>
         </div>
@@ -172,4 +217,6 @@ function LoginPage(props) {
   )
 }
 
-export default LoginPage
+export default RegisterPage
+
+//export default withRouter(RegisterPage)
