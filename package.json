@@ -1,32 +1,19 @@
 {
-  "name": "frontend-web",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite --port 3000",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint .",
-    "format": "prettier --write \"src/**/*.{js,jsx}\""
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.3",
-    "async-mutex": "^0.4.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-redux": "^8.0.5",
-    "react-router-dom": "^6.10.0",
-    "redux-persist": "^6.0.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.28",
-    "@types/react-dom": "^18.0.11",
-    "@vitejs/plugin-react": "^3.1.0",
-    "eslint": "^8.38.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-react": "^7.32.2",
-    "prettier": "^2.8.7",
-    "vite": "^4.2.0"
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "mysql": "^2.18.1"
   }
 }
