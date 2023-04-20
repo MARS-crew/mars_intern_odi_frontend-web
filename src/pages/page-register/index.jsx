@@ -21,7 +21,7 @@ const registerPage = () => {
 
   const register = async () => {
     await axios
-      .post("http://phone.pinodev.shop:8000/api/user", {
+      .post("/api/user", {
         id: idValue,
         password: pwValue,
         name: nameValue,
