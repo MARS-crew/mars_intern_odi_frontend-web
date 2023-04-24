@@ -6,6 +6,7 @@ import { Card, Grid, Typography, Button } from "@mui/material"
 
 // ** Other View Imports
 import EditModal from "../../modal/edit-modal"
+import DeleteModal from "../..//modal/delete-modal"
 
 const PhoneCardView = ({ phone: { name, number, idx }, handleRefetch }) => {
   const [open, setOpen] = useState(false)
@@ -39,6 +40,14 @@ const PhoneCardView = ({ phone: { name, number, idx }, handleRefetch }) => {
         <EditModal
           state={open}
           closeEvent={handleClose}
+          handleRefetch={handleRefetch}
+          id={idx}
+        />
+      )}
+      {openDelete && (
+        <DeleteModal
+          state={openDelete}
+          closeEvent={handleDeleteClose}
           handleRefetch={handleRefetch}
           id={idx}
         />

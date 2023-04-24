@@ -24,6 +24,12 @@ export const phoneApi = api
           body: args,
         }),
       }),
+      deletePhone: builder.mutation({
+        query: (id) => ({
+          url: `/phone/${id}`,
+          method: "DELETE",
+        }),
+      }),
       savePhone: builder.mutation({
         query: (args) => ({
           url: "/phone",
@@ -39,4 +45,5 @@ export const {
   useGetPhoneListQuery,
   useLazyGetPhoneQuery,
   useUpdatePhoneMutation,
+  useDeletePhoneMutation,
 } = phoneApi
