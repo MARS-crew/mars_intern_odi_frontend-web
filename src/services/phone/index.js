@@ -8,8 +8,20 @@ export const phoneApi = api
     overrideExisting: false,
     endpoints: (builder) => ({
       getPhoneList: builder.query({
-        query: (args) => ({
+        query: () => ({
           url: "/phone",
+        }),
+      }),
+      getPhone: builder.query({
+        query: (id) => ({
+          url: `/phone/${id}`,
+        }),
+      }),
+      updatePhone: builder.mutation({
+        query: ({ idx, ...args }) => ({
+          url: `/phone/${idx}`,
+          method: "PUT",
+          body: args,
         }),
       }),
       savePhone: builder.mutation({
@@ -22,4 +34,9 @@ export const phoneApi = api
     }),
   })
 
-export const { useSavePhoneMutation, useGetPhoneListQuery } = phoneApi
+export const {
+  useSavePhoneMutation,
+  useGetPhoneListQuery,
+  useLazyGetPhoneQuery,
+  useUpdatePhoneMutation,
+} = phoneApi

@@ -35,7 +35,7 @@ const HomePageView = ({ phoneData, refetch }) => {
           </Grid>
           {phoneData.map((item) => (
             <Grid item xs={12} key={item.idx}>
-              <PhoneCard phone={item} />
+              <PhoneCard phone={item} handleRefetch={refetch} />
             </Grid>
           ))}
         </Grid>
