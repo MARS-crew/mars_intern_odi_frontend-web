@@ -7,6 +7,11 @@ export const phoneApi = api
   .injectEndpoints({
     overrideExisting: false,
     endpoints: (builder) => ({
+      getPhoneList: builder.query({
+        query: (args) => ({
+          url: "/phone",
+        }),
+      }),
       savePhone: builder.mutation({
         query: (args) => ({
           url: "/phone",
@@ -17,4 +22,4 @@ export const phoneApi = api
     }),
   })
 
-export const { useSavePhoneMutation } = phoneApi
+export const { useSavePhoneMutation, useGetPhoneListQuery } = phoneApi
