@@ -19,7 +19,7 @@ const AddModalView = ({
 }) => {
   return (
     <Dialog open={state}>
-      <DialogTitle>{message}</DialogTitle>
+      <DialogTitle>전화번호 추가</DialogTitle>
       <DialogContent>
         <Grid container spacing={3} sx={{ mt: 1 }}>
           <Grid item xs={12}>

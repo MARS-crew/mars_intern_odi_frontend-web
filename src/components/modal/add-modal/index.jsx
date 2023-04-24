@@ -3,7 +3,7 @@ import { useSavePhoneMutation } from "../../../services"
 import AddModalView from "./add-modal"
 import useInput from "../../../hooks/useInput"
 
-const AddModal = ({ state, closeEvent, message, handleRefetch }) => {
+const AddModal = ({ state, closeEvent, handleRefetch }) => {
   const [phone, setPhone, setData] = useInput({
     name: "",
     number: "",
@@ -43,7 +43,6 @@ const AddModal = ({ state, closeEvent, message, handleRefetch }) => {
     <AddModalView
       state={state}
       closeEvent={closeEvent}
-      message={message}
       regContent={regContent}
       phone={phone}
       setPhone={setPhone}

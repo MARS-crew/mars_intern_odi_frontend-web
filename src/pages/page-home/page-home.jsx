@@ -41,12 +41,7 @@ const HomePageView = ({ phoneData, refetch }) => {
         </Grid>
       </Grid>
       <Grid item xs={3} />
-      <AddModal
-        state={open}
-        closeEvent={handleClose}
-        message="전화번호 추가"
-        handleRefetch={refetch}
-      />
+      <AddModal state={open} closeEvent={handleClose} handleRefetch={refetch} />
     </Grid>
   )
 }
