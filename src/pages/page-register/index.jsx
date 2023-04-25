@@ -1,11 +1,14 @@
 import axios from "axios"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-
-const LoginPage = () => {
-  const [userName, setUserName] = useState()
+const registerPage = () => {
+  // data  > message "회원가입 성공"
+  //
+  // responseData : { name, "good" }
+  const [userData, setUserData] = useState()
   const [idValue, setId] = useState("")
   const [pwValue, setPw] = useState("")
+  const [nameValue, setName] = useState("")
 
   const saveUserId = (event) => {
     setId(event.target.value)
@@ -13,37 +16,25 @@ const LoginPage = () => {
   const saveUserPw = (event) => {
     setPw(event.target.value)
   }
+  const saveUserName = (event) => {
+    setName(event.target.value)
+  }
 
-  const login = async () => {
+  const register = async () => {
     await axios
-      .post("/api/user/login", {
+      .post("/api/user", {
         id: idValue,
         password: pwValue,
+        name: nameValue,
       })
-      .then(async (res) => {
+      .then((res) => {
         if (res.data.code === "SUCCESS") {
-          alert("로그인 성공!!")
-          const { accessToken, refreshToken, name } = res.data.responseData
-
-          // 토큰 로컬에 저장
-          localStorage.setItem("accessToken", accessToken)
-          localStorage.setItem("refreshToken", refreshToken)
-          // 유저 정보 저장
-          setUserName(name)
-        } else if (res.data.status === 401) {
-          // 토큰 만료됨
-          const refreshToken = localStorage.getItem("refreshToken")
-          await axios
-            .post("http://phone.pinodev.shop:8000/api/user/token", {
-              refreshToken,
-            })
-            .then((res) => {
-              const { accessToken, refreshToken, name } = res.data.responseData
-
-              // 토큰 로컬에 저장
-              localStorage.setItem("accessToken", accessToken)
-              localStorage.setItem("refreshToken", refreshToken)
-            })
+          alert("회원가입 완료")
+          setUserData(res.data)
+        } else if (
+          res.data.message.includes("query did not return a unique result: 2")
+        ) {
+          alert("이미 회원가입 된 유저입니다.")
         }
       })
   }
@@ -78,7 +69,7 @@ const LoginPage = () => {
       display: "flex",
       flexDirection: "column",
       width: "400px",
-      height: "400px",
+      height: "600px",
       alignItems: "center",
       justifyContent: "center",
       borderRadius: "20px",
@@ -130,20 +121,9 @@ const LoginPage = () => {
         <img src="./src/assets/retro_logo.png" style={style.mainLogoImg}></img>
         <div style={style.mainView}>
           <h2>Welcome! HODI STUDIO</h2>
-          <div>
-            {userName ? (
-              <div>
-                <span style={style.notiRedBtn}>
-                  당신의 접속을 환영합니다. {userName}님
-                </span>
-              </div>
-            ) : (
-              <Link to="/register" style={style.notiRedBtn}>
-                Tip. 로그인에 문제가 발생하셨나요?
-              </Link>
-            )}
-          </div>
-
+          <Link to="/" style={style.notiRedBtn}>
+            Tip. 회원가입에 문제가 발생하셨다면?
+          </Link>
           <div style={style.formContainer}>
             <label>Id</label>
             <input
@@ -161,8 +141,16 @@ const LoginPage = () => {
               value={pwValue}
               onChange={saveUserPw}
             />
-            <button onClick={() => login()} style={style.yellowBtn}>
-              Login
+            <label>Name</label>
+            <input
+              style={style.infoInput}
+              type="text"
+              placeholder="이름을 입력해주세요."
+              value={nameValue}
+              onChange={saveUserName}
+            />
+            <button onClick={() => register()} style={style.yellowBtn}>
+              회원 가입
             </button>
           </div>
           <div>
@@ -170,8 +158,8 @@ const LoginPage = () => {
               홈으로
             </Link>
             <span>|</span>
-            <Link to="/register" className="Links" style={style.smallBtn}>
-              회원가입
+            <Link to="/login" className="Links" style={style.smallBtn}>
+              로그인
             </Link>
           </div>
         </div>
@@ -180,4 +168,4 @@ const LoginPage = () => {
   )
 }
 
-export default LoginPage
+export default registerPage

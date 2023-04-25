@@ -1,0 +1,21 @@
+body {
+  background-color: white;
+  margin: 0 auto;
+  font-family: Arial;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  background-color: #e3ab9a;
+}
+.Links:visited {
+  text-decoration: "none";
+}
+.Links:hover {
+  text-decoration: "none";
+}
+.Links:focus {
+  text-decoration: "none";
+}
+.Links:hover .Links:active {
+  text-decoration: "none";
+}
