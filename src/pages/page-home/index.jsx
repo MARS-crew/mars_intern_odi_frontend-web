@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+
 function LandingPage() {
   const style = {
     container: {
@@ -49,8 +51,10 @@ function LandingPage() {
       height: "60px",
     },
     smallBtn: {
-      border: "none",
-      backgroundColor: "transparent",
+      textDecoration: "none",
+      fontSize: 12,
+      margin: 5,
+      color: "black",
     },
     textCenter: {
       textAlign: "center",
@@ -71,9 +75,13 @@ function LandingPage() {
           <button style={style.yellowBtn}>Site Go</button>
           <button style={style.yellowBtn}>Inquiries about lease</button>
           <div>
-            <button style={style.smallBtn}>로그인</button>
+            <Link to="/login" className="Links" style={style.smallBtn}>
+              로그인
+            </Link>
             <span>|</span>
-            <button style={style.smallBtn}>회원가입</button>
+            <Link to="/register" className="Links" style={style.smallBtn}>
+              회원가입
+            </Link>
           </div>
         </div>
       </div>

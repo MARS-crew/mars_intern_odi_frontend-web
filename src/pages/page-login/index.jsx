@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 
 const LoginPage = () => {
   const [userName, setUserName] = useState()
@@ -96,16 +97,17 @@ const LoginPage = () => {
       height: "60px",
     },
     smallBtn: {
-      border: "none",
-      backgroundColor: "transparent",
+      textDecoration: "none",
+      fontSize: 12,
+      margin: 5,
+      color: "black",
     },
     notiRedBtn: {
-      border: "none",
-      backgroundColor: "transparent",
       color: "#7B3911",
       fontSize: "13px",
       fontWeight: "bold",
       marginBottom: "40px",
+      textDecoration: "none",
     },
     infoInput: {
       outline: "none",
@@ -136,9 +138,9 @@ const LoginPage = () => {
                 </span>
               </div>
             ) : (
-              <button style={style.notiRedBtn}>
+              <Link to="/register" style={style.notiRedBtn}>
                 Tip. 로그인에 문제가 발생하셨나요?
-              </button>
+              </Link>
             )}
           </div>
 
@@ -164,9 +166,13 @@ const LoginPage = () => {
             </button>
           </div>
           <div>
-            <button style={style.smallBtn}>홈으로</button>
+            <Link to="/" className="Links" style={style.smallBtn}>
+              홈으로
+            </Link>
             <span>|</span>
-            <button style={style.smallBtn}>회원가입</button>
+            <Link to="/register" className="Links" style={style.smallBtn}>
+              회원가입
+            </Link>
           </div>
         </div>
       </div>

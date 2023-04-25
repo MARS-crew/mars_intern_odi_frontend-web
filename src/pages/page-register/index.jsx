@@ -1,5 +1,6 @@
 import axios from "axios"
 import { useState } from "react"
+import { Link } from "react-router-dom"
 const registerPage = () => {
   // data  > message "회원가입 성공"
   //
@@ -87,16 +88,17 @@ const registerPage = () => {
       height: "60px",
     },
     smallBtn: {
-      border: "none",
-      backgroundColor: "transparent",
+      textDecoration: "none",
+      fontSize: 12,
+      margin: 5,
+      color: "black",
     },
     notiRedBtn: {
-      border: "none",
-      backgroundColor: "transparent",
       color: "#7B3911",
       fontSize: "13px",
       fontWeight: "bold",
       marginBottom: "40px",
+      textDecoration: "none",
     },
     infoInput: {
       outline: "none",
@@ -119,9 +121,9 @@ const registerPage = () => {
         <img src="./src/assets/retro_logo.png" style={style.mainLogoImg}></img>
         <div style={style.mainView}>
           <h2>Welcome! HODI STUDIO</h2>
-          <button style={style.notiRedBtn}>
+          <Link to="/" style={style.notiRedBtn}>
             Tip. 회원가입에 문제가 발생하셨다면?
-          </button>
+          </Link>
           <div style={style.formContainer}>
             <label>Id</label>
             <input
@@ -152,9 +154,13 @@ const registerPage = () => {
             </button>
           </div>
           <div>
-            <button style={style.smallBtn}>홈으로</button>
+            <Link to="/" className="Links" style={style.smallBtn}>
+              홈으로
+            </Link>
             <span>|</span>
-            <button style={style.smallBtn}>로그인</button>
+            <Link to="/login" className="Links" style={style.smallBtn}>
+              로그인
+            </Link>
           </div>
         </div>
       </div>
