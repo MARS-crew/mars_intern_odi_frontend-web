@@ -16,7 +16,7 @@ const LoginPage = () => {
 
   const login = async () => {
     await axios
-      .post("http://phone.pinodev.shop:8000/api/user/login", {
+      .post("/api/user/login", {
         id: idValue,
         password: pwValue,
       })
