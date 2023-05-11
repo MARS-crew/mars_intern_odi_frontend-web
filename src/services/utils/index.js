@@ -1,7 +1,6 @@
 // ** Redux Imports
 import { updateUser, userLogout } from "app/auth"
 import { fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-
 // ** Other Imports
 import { Mutex } from "async-mutex"
 

@@ -23,7 +23,7 @@ function Login() {
             axios.post("http://phone.pinodev.shop:8000/api/user/login", values)
             .then((res) => {
                 if (res.data.status === 200) {
-                    navigate('/home');
+                    navigate('/phonebook');
                 } else {
                     alert('Invalid id or password');
                 }

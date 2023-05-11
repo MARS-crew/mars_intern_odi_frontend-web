@@ -17,8 +17,7 @@ function Signup() {
         setValues(prev => ({...prev, [e.target.name]: e.target.value}))
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
         seterrors(Vaildation(values));
         if(errors.name === "" && errors.id === "" && errors.password === ""){
             axios.post('http://phone.pinodev.shop:8000/api/user',values)
